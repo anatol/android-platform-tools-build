@@ -24,6 +24,8 @@ https://android.googlesource.com/platform/frameworks/base
 https://android.googlesource.com/platform/frameworks/native
 https://android.googlesource.com/platform/system/core
 https://android.googlesource.com/platform/system/extras
+https://android.googlesource.com/platform/system/libbase
+https://android.googlesource.com/platform/system/libziparchive
 https://android.googlesource.com/platform/system/tools/mkbootimg
 https://android.googlesource.com/platform/external/selinux
 https://android.googlesource.com/platform/external/f2fs-tools
