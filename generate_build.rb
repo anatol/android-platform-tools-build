@@ -1,6 +1,6 @@
 #!/usr/bin/ruby
 
-PLATFORM_TOOLS_VERSION='30.0.3'
+PLATFORM_TOOLS_VERSION='30.0.4'
 
 def expand(dir, files)
   files.map { |f| File.join(dir, f) }
@@ -485,4 +485,4 @@ ext2simg = compile(expand("e2fsprogs", ext2simgfiles), "-Ie2fsprogs/lib -Icore/l
 
 link("ext2simg", ext2simg + libext2fs + libsparse + libbase + libzip + liblog + libutil, "-lz -lpthread")
 
-link("adb", libbase + liblog + libcutils + libutil + libadbd + libadb + libdiagnoseusb + libcrypto + libandroidfw + libzip + [apkent_o, key_type_o, app_processes_o, adb_known_hosts_o, pairing_o], boringssl_ldflags + " -lpthread -lusb-1.0 -lprotobuf -lz -llz4 -lbrotlidec -lbrotlienc")
+link("adb", libbase + liblog + libcutils + libutil + libadbd + libadb + libdiagnoseusb + libcrypto + libandroidfw + libzip + [apkent_o, key_type_o, app_processes_o, adb_known_hosts_o, pairing_o], boringssl_ldflags + " -lpthread -lusb-1.0 -lprotobuf -lz -llz4 -lbrotlidec -lbrotlienc -lzstd")

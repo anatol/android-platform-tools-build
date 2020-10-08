@@ -18,7 +18,7 @@ Using the build scripts
 
 To build Android tools at your system please do:
  * Copy `build.ninja` and `deployagent.jar` to you build directory
- * Checkout following Android sources
+ * Clone following Android sources
 ```
 https://android.googlesource.com/platform/frameworks/base
 https://android.googlesource.com/platform/frameworks/native
@@ -33,8 +33,14 @@ https://android.googlesource.com/platform/external/e2fsprogs
 https://android.googlesource.com/platform/external/avb
 https://android.googlesource.com/platform/external/boringssl
 ```
-for a `platform-tools-$PLATFORM_TOOLS_VERSION` tag (see current version `PLATFORM_TOOLS_VERSION` in [generate_build.rb](generate_build.rb) file).
- * Apply patches from `./patches` directory
+
+ * Checkout it to `platform-tools-$PLATFORM_TOOLS_VERSION` tag you work with (see current version `PLATFORM_TOOLS_VERSION` in [generate_build.rb](generate_build.rb) file):
+
+```bash
+for d in base native core extras libbase libziparchive mkbootimg selinux f2fs-tools e2fsprogs avb boringssl; do pushd $d; git checkout platform-tools-30.0.4; popd; done
+```
+
+ * Apply patches from `./patches` directory using `cd $DIR; patch -p1 $PATCH_FILE`
  * Build boringssl with `cd boringssl/src/build && cmake -GNinja .. && ninja crypto/libcrypto.a ssl/libssl.a`
  * Build tools with `ninja`
  * There going to be Android binaries ready for use: `fastboot` `adb` `mke2fs.android` `e2fsdroid` `ext2simg` `avb/avbtool`
