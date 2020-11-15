@@ -1,6 +1,6 @@
 #!/usr/bin/ruby
 
-PLATFORM_TOOLS_VERSION='30.0.4'
+PLATFORM_TOOLS_VERSION='30.0.5'
 
 def expand(dir, files)
   files.map { |f| File.join(dir, f) }
@@ -156,6 +156,7 @@ adbfiles = %w(
   pairing_connection/pairing_connection.cpp
   services.cpp
   socket_spec.cpp
+  sysdeps/env.cpp
   sysdeps/errno.cpp
   sysdeps/posix/network.cpp
   sysdeps_unix.cpp
@@ -196,7 +197,7 @@ logfiles = %w(
   logprint.cpp
   properties.cpp
 )
-liblog = compile(expand("core/liblog", logfiles), "-DLIBLOG_LOG_TAG=1006 -D_XOPEN_SOURCE=700 -DFAKE_LOG_DEVICE=1 -Icore/log/include -Icore/include -Ilibbase/include")
+liblog = compile(expand("core/liblog", logfiles), "-DLIBLOG_LOG_TAG=1006 -D_XOPEN_SOURCE=700 -DFAKE_LOG_DEVICE=1 -Icore/liblog/include -Icore/include -Ilibbase/include")
 
 cutilsfiles = %w(
   android_get_control_file.cpp
@@ -219,7 +220,7 @@ diagnoseusbfiles = %w(
 libdiagnoseusb = compile(expand("core/diagnose_usb", diagnoseusbfiles), "-Icore/include -Ilibbase/include -Icore/diagnose_usb/include")
 
 libcryptofiles = %w(
-  android_pubkey.c
+  android_pubkey.cpp
 )
 libcrypto = compile(expand("core/libcrypto_utils", libcryptofiles), "-Icore/libcrypto_utils/include -Iboringssl/src/include")
 
