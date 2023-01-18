@@ -1,3 +1,12 @@
+Project status
+==
+
+This project is not actively developed anymore. These build scripts were merged into a more advanced
+project https://github.com/nmeum/android-tools project.
+
+Please switch to https://github.com/nmeum/android-tools
+
+
 Build script for Android platform tools
 ==
 
